@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - '*.*.*'
+  workflow_dispatch:
 
 jobs:
   release:
@@ -17,12 +18,14 @@ jobs:
           qemu-version: 4.2.0-7
       - name: build & publish
         run: |
-          VERSION=${GITHUB_REF:10}
+          git fetch --tags
+          VERSION=`git tag | sort -nr |head -n1`
+          echo 'YAPI version: '$VERSION
           docker login \
-            --username jayfong \
+            --username fansys \
             --password ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
           docker buildx build \
             --platform linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/s390x \
             --push \
-            --tag jayfong/yapi:latest \
-            --tag jayfong/yapi:${VERSION} .
+            --tag fansys/yapi:latest \
+            --tag fansys/yapi:${VERSION} .

@@ -106,6 +106,7 @@ git clone https://gitee.com/fjc0k/docker-YApi.git
 | YAPI_MAIL_ENABLE    | boolean | 是否启用                                                                                                     | true                                 |
 | YAPI_MAIL_HOST      | string  | 邮件服务地址                                                                                                 | smtp.163.com                         |
 | YAPI_MAIL_PORT      | number  | 邮件服务端口                                                                                                 | 465                                  |
+| YAPI_MAIL_SECURE    | boolean | 是否启用SSL                                                                                                  | true                                  |
 | YAPI_MAIL_FROM      | string  | 发送人邮箱                                                                                                   | foo@163.com                          |
 | YAPI_MAIL_AUTH_USER | string  | 登录邮件服务的用户名                                                                                         | bar@163.com                          |
 | YAPI_MAIL_AUTH_PASS | string  | 登录邮件服务的用户密码                                                                                       | f00bar                               |

@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - beta
+  workflow_dispatch:
 
 jobs:
   release:
@@ -14,8 +15,8 @@ jobs:
           ref: beta
       - name: build
         run: |
-          docker login -u jayfong -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-          docker build -t jayfong/yapi:latest -t jayfong/yapi:beta .
-          docker build -t jayfong/yapi:play-beta -f ./Dockerfile.web .
-          docker push jayfong/yapi:beta
-          docker push jayfong/yapi:play-beta
+          docker login -u fansys -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+          docker build -t fansys/yapi:latest -t fansys/yapi:beta .
+          docker build -t fansys/yapi:play-beta -f ./Dockerfile.web .
+          docker push fansys/yapi:beta
+          docker push fansys/yapi:play-beta

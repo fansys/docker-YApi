@@ -3,14 +3,15 @@ name: Auto Update YApi
 on:
   schedule:
     - cron: '*/30 * * * *'
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.GH_TOKEN }}
+        #with:
+        #  token: ${{ secrets.GH_TOKEN }}
       - name: Update
         run: |
           PROJECT_LATEST_TAG=$(wget -q -O- "https://api.github.com/repos/${GITHUB_REPOSITORY}/tags" | grep '"name":' | sed -E 's#.*"(.+)".*#\1#' | head -n1)

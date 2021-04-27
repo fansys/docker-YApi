@@ -124,6 +124,7 @@ const configShape = {
     host: String,
     port: Number,
     from: String,
+	secure: Boolean,
     auth: {
       user: String,
       pass: String,
