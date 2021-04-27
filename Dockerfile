@@ -29,7 +29,7 @@ RUN cp /yapi/scripts/start.js ./start.js
 RUN node /yapi/scripts/prepare.js $(pwd)
 
 # 安装依赖
-RUN npm install
+RUN npm install ykit -g && npm install
 
 # 清理文件
 RUN node /yapi/scripts/clean.js $(pwd)
