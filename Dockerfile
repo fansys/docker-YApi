@@ -29,13 +29,13 @@ RUN cp /yapi/scripts/start.js ./start.js
 RUN node /yapi/scripts/prepare.js $(pwd)
 
 # 安装依赖
-RUN yarn
+RUN npm install
 
 # 清理文件
 RUN node /yapi/scripts/clean.js $(pwd)
 
 # 构建应用
-RUN yarn build-client
+RUN npm run build-client
 
 # 再次清理以删除构建缓存文件
 RUN node /yapi/scripts/clean.js $(pwd)
